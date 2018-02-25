@@ -22,7 +22,7 @@ class TodoItem extends Component {
                 <button
                     onClick={() => this.props.handleDelete(this.props.item.id)}
                 >delete</button>
-                <div>{this.props.done}</div>
+                <span>{this.props.done?'Completed':'Not Complete'}</span>
             </div>
         );
     }
@@ -32,9 +32,7 @@ class TodoItem extends Component {
     editComplete() {
         this.props.handleEdit(this.state.editedText);
     }
-    toggleStatus(){
-        this.props.toggleStatus(this.props.item.id);
-    }
+   
 };
 
 export default TodoItem;

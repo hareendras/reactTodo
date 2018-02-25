@@ -14,7 +14,7 @@ const ToDoList = (props) => {
                 handleDelete={handleDelete}
                 handleEdit={handleEdit}
                 toggleStatus={toggleStatus}
-                done={props.done}
+                done={item.done}
             />
         }));
 };

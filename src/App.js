@@ -49,7 +49,7 @@ class App extends Component {
 
   toggleStatus(itemId) {
     console.log("Old state", this.state);
-    const newState = {...this.state};
+    const newState = JSON.parse(JSON.stringify(this.state));
     const todo = newState.toDoItems;
     const done2 = (_.find(todo, { id: itemId })).done;
     const newToDoList = _.uniq(_.chain(todo)
@@ -57,6 +57,7 @@ class App extends Component {
       .merge({ done: !done2 }).value());
 
     console.log("new State", newState);
+    this.setState(newState);
   }
 
 
@@ -70,7 +71,7 @@ class App extends Component {
             handleDelete={this.handleDelete}
             handleEdit={this.handleEdit}
             toggleStatus={this.toggleStatus}
-            done={this.state.done}
+            
           />
         </div>
         <div>
