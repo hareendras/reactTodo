@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TodoItem from './todo_item';
 
 const ToDoList = (props) => {
-    if (!props.toDoItems) return <div>dsds</div>;
+    if (!props.toDoItems) return <div></div>;
     const handleDelete = props.handleDelete;
     const handleEdit = props.handleEdit;
     const toggleStatus = props.toggleStatus;

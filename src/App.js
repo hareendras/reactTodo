@@ -13,6 +13,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleStatus = this.toggleStatus.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   handleChange(event) {
@@ -43,18 +44,29 @@ class App extends Component {
     });
   };
 
-  handleEdit(itemId) {
-    console.log("item to be edited", itemId);
+  handleEdit(itemId, newText) {
+    console.log("item to be edited", itemId, newText);
+    const newState = JSON.parse(JSON.stringify(this.state));
+    const todo = newState.toDoItems;
+    const newToDoList = _.uniq(_.chain(todo)
+      .find({ id: itemId })
+      .merge({
+        text: newText
+      }).value()
+    );
+    this.setState(newState);
   }
 
   toggleStatus(itemId) {
     console.log("Old state", this.state);
     const newState = JSON.parse(JSON.stringify(this.state));
     const todo = newState.toDoItems;
-    const done2 = (_.find(todo, { id: itemId })).done;
     const newToDoList = _.uniq(_.chain(todo)
       .find({ id: itemId })
-      .merge({ done: !done2 }).value());
+      .merge({
+        done: !(_.find(todo, { id: itemId })).done
+      }).value()
+    );
 
     console.log("new State", newState);
     this.setState(newState);
@@ -65,27 +77,24 @@ class App extends Component {
 
     return (
       <div>
-        <div>
-          <ToDoList
-            toDoItems={this.state.toDoItems}
-            handleDelete={this.handleDelete}
-            handleEdit={this.handleEdit}
-            toggleStatus={this.toggleStatus}
-            
+        <ToDoList
+          toDoItems={this.state.toDoItems}
+          handleDelete={this.handleDelete}
+          handleEdit={this.handleEdit}
+          toggleStatus={this.toggleStatus}
+
+        />
+        <form onSubmit={this.handleSubmit}>
+          <input
+            placeholder="Add Item"
+            onChange={this.handleChange}
+            value={this.state.text}
           />
-        </div>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <input
-              placeholder="Add Item"
-              onChange={this.handleChange}
-              value={this.state.text}
-            />
-            <span>
-              <button type="submit">Add To Do</button>
-            </span>
-          </form>
-        </div>
+          <span >
+            <button type="submit">Add To Do</button>
+          </span>
+        </form>
+
       </div>
 
     );
