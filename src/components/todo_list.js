@@ -7,6 +7,7 @@ const ToDoList = (props) => {
     const handleEdit = props.handleEdit;
     const toggleStatus = props.toggleStatus;
     return (
+     
         props.toDoItems.map((item) => {
             return <TodoItem
                 item={item}
@@ -16,7 +17,9 @@ const ToDoList = (props) => {
                 toggleStatus={toggleStatus}
                 done={item.done}
             />
-        }));
+        })
+       
+    );
 };
 
 export default ToDoList;

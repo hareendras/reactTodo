@@ -72,31 +72,33 @@ class App extends Component {
     this.setState(newState);
   }
 
-
   render() {
 
     return (
-      <div>
-        <ToDoList
-          toDoItems={this.state.toDoItems}
-          handleDelete={this.handleDelete}
-          handleEdit={this.handleEdit}
-          toggleStatus={this.toggleStatus}
+      <div className="pure-g">
+        <div class="pure-u-1 pure-u-md-1-3">
+          <ToDoList
+            toDoItems={this.state.toDoItems}
+            handleDelete={this.handleDelete}
+            handleEdit={this.handleEdit}
+            toggleStatus={this.toggleStatus}
 
-        />
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="Add Item"
-            onChange={this.handleChange}
-            value={this.state.text}
           />
-          <span >
-            <button type="submit">Add To Do</button>
-          </span>
-        </form>
+          <form className="pure-form" onSubmit={this.handleSubmit}>
+            <input
+              placeholder="Type in item to be added"
+              onChange={this.handleChange}
+              value={this.state.text}
+            />
+            <span >
+              <button className="pure-button pure-button-primary" type="submit">Add To Do</button>
+            </span>
+          </form>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-3">
 
+        </div>
       </div>
-
     );
   }
 }
