@@ -29,9 +29,6 @@ class TodoItem extends Component {
     onInputChange(editedText) {
         this.setState({ editedText });
     }
-    onEditFinish() {  
-        this.props.handleEdit(this.props.item.id, this.state.editedText);
-    }
 
 };
 
