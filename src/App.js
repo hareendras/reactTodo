@@ -21,8 +21,7 @@ class App extends Component {
   };
 
   handleSubmit(e) {
-    e.preventDefault();
-    console.log(this.state);
+    e.preventDefault();    
     if (!this.state.text.length) {
       return;
     }
@@ -34,8 +33,7 @@ class App extends Component {
     this.setState({
       toDoItems: this.state.toDoItems.concat(newItem),
       text: ''
-    });
-    console.log(this.state);
+    });    
   };
 
   handleDelete(itemId) {
@@ -44,8 +42,7 @@ class App extends Component {
     });
   };
 
-  handleEdit(itemId, newText) {
-    console.log("item to be edited", itemId, newText);
+  handleEdit(itemId, newText) {    
     const newState = JSON.parse(JSON.stringify(this.state));
     const todo = newState.toDoItems;
     const newToDoList = _.uniq(_.chain(todo)
@@ -58,7 +55,6 @@ class App extends Component {
   }
 
   toggleStatus(itemId) {
-    console.log("Old state", this.state);
     const newState = JSON.parse(JSON.stringify(this.state));
     const todo = newState.toDoItems;
     const newToDoList = _.uniq(_.chain(todo)
@@ -66,9 +62,7 @@ class App extends Component {
       .merge({
         done: !(_.find(todo, { id: itemId })).done
       }).value()
-    );
-
-    console.log("new State", newState);
+    );    
     this.setState(newState);
   }
 
@@ -76,7 +70,7 @@ class App extends Component {
 
     return (
       <div className="pure-g">
-        <div class="pure-u-1 pure-u-md-1-3">
+        <div className="pure-u-1 pure-u-md-1-3">
           <ToDoList
             toDoItems={this.state.toDoItems}
             handleDelete={this.handleDelete}
@@ -95,7 +89,7 @@ class App extends Component {
             </span>
           </form>
         </div>
-        <div class="pure-u-1 pure-u-md-1-3">
+        <div className="pure-u-1 pure-u-md-1-3">
 
         </div>
       </div>

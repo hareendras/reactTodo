@@ -26,8 +26,7 @@ class TodoItem extends Component {
             </div>
         );
     }
-    onInputChange(editedText) {
-        console.log(editedText);
+    onInputChange(editedText) {        
         this.setState({ editedText });
     }
 
