@@ -15,10 +15,9 @@ class TodoItem extends Component {
                 />
                 <input type="text"
                     onChange={event => this.onInputChange(event.target.value)}
-                    value={this.state.editedText || this.props.item.text}
+                    value={this.state.editedText === undefined ? this.props.item.text : this.state.editedText}
                     onBlur={() => this.props.handleEdit(this.props.item.id, this.state.editedText)}
                 />
-
                 <button
                     onClick={() => this.props.handleDelete(this.props.item.id)}
                 >delete</button>
@@ -27,6 +26,7 @@ class TodoItem extends Component {
         );
     }
     onInputChange(editedText) {
+        console.log(editedText);
         this.setState({ editedText });
     }
 
