@@ -15,3 +15,13 @@
 .container {
     padding-left: 50px;
 }
+
+.vertical-container {
+    height: 150px;
+    display: -webkit-flex;
+    display:         flex;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-justify-content: center;
+            justify-content: center;
+  }

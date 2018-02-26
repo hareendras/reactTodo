@@ -16,39 +16,39 @@ class App extends Component {
     this.handleEdit = this.handleEdit.bind(this);
   }
 
-componentDidMount(){
-  this.setState({
-    toDoItems: [
-      {
-        text: "Item1 in to do list",
-        id: Math.random().toString(36).substr(2, 9),
-        done: false
-      },
-      {
-        text: "Item2 in to do list",
-        id: Math.random().toString(36).substr(2, 9),
-        done: false
-      },
-      {
-        text: "Item3 in to do list",
-        id: Math.random().toString(36).substr(2, 9),
-        done: false
-      },
-      {
-        text: "Item4 in to do list",
-        id: Math.random().toString(36).substr(2, 9),
-        done: false
-      }
-    ],
-    text: ''
-  });
-}
+  componentDidMount() {
+    this.setState({
+      toDoItems: [
+        {
+          text: "Item1 in to do list",
+          id: Math.random().toString(36).substr(2, 9),
+          done: false
+        },
+        {
+          text: "Item2 in to do list",
+          id: Math.random().toString(36).substr(2, 9),
+          done: false
+        },
+        {
+          text: "Item3 in to do list",
+          id: Math.random().toString(36).substr(2, 9),
+          done: false
+        },
+        {
+          text: "Item4 in to do list",
+          id: Math.random().toString(36).substr(2, 9),
+          done: false
+        }
+      ],
+      text: ''
+    });
+  }
   handleChange(event) {
     this.setState({ text: event.target.value });
   };
 
   handleSubmit(e) {
-    e.preventDefault();    
+    e.preventDefault();
     if (!this.state.text.length) {
       return;
     }
@@ -60,7 +60,7 @@ componentDidMount(){
     this.setState({
       toDoItems: this.state.toDoItems.concat(newItem),
       text: ''
-    });    
+    });
   };
 
   handleDelete(itemId) {
@@ -69,7 +69,7 @@ componentDidMount(){
     });
   };
 
-  handleEdit(itemId, newText) {    
+  handleEdit(itemId, newText) {
     const newState = JSON.parse(JSON.stringify(this.state));
     const todo = newState.toDoItems;
     const newToDoList = _.uniq(_.chain(todo)
@@ -89,7 +89,7 @@ componentDidMount(){
       .merge({
         done: !(_.find(todo, { id: itemId })).done
       }).value()
-    );    
+    );
     this.setState(newState);
   }
 
