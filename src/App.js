@@ -16,6 +16,33 @@ class App extends Component {
     this.handleEdit = this.handleEdit.bind(this);
   }
 
+componentDidMount(){
+  this.setState({
+    toDoItems: [
+      {
+        text: "Item1 in to do list",
+        id: Math.random().toString(36).substr(2, 9),
+        done: false
+      },
+      {
+        text: "Item2 in to do list",
+        id: Math.random().toString(36).substr(2, 9),
+        done: false
+      },
+      {
+        text: "Item3 in to do list",
+        id: Math.random().toString(36).substr(2, 9),
+        done: false
+      },
+      {
+        text: "Item4 in to do list",
+        id: Math.random().toString(36).substr(2, 9),
+        done: false
+      }
+    ],
+    text: ''
+  });
+}
   handleChange(event) {
     this.setState({ text: event.target.value });
   };
